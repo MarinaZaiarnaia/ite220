@@ -10,7 +10,7 @@ $(function(){
 		success: function(data){
 			//console.log(data.name);	
 			$("#container").html(data.name + ": " + data.main.temp);
-			$("#container2").html(data.clouds + ":" + data.wind.speed);
+			$("#container2").html(data.wind.speed);
 			$("#cButton").on("click", function(temp2){
 				var temp2 = celsius(data.main.temp);
 				$("#container").html(data.name + ": " + temp2);
