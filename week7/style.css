@@ -1,0 +1,42 @@
+#header 	{
+			width: 1000px; 
+			height: 90px; 
+			margin: auto; 
+			margin-top: 20px;
+			margin-bottom: 7px;
+			text-align: center;
+			font-family: 'Orbitron', sans-serif;
+			font-size: 70px;
+			color: #708db1;
+			text-shadow: 2px 2px black;		
+			}
+#menu		{
+			width: 1500px; 
+			height: 1000px; 
+			background-image: url("weather.jpg");
+			border-radius: 7px;
+			border: 2px solid #708db1;
+			margin: auto; 
+			margin-bottom: 20px;
+			text-align: center;
+			padding-top: 15px;
+			}
+#container {font-size: 50px;
+			color: #708db1;
+			text-shadow: 2px 2px black;	
+	}
+#container2 {font-size: 50px;
+			color: #708db1;
+			text-shadow: 2px 2px black;	
+	}
+a  {font-family: 'Orbitron', sans-serif;
+			font-size: 50px;
+			color: white;
+			text-shadow: 2px 2px black;}
+button {
+  color: #708db1;
+  font-weight: bold;
+  font-size: 150%;
+  text-transform: uppercase;
+}
+
