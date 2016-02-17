@@ -32,14 +32,53 @@ $(function(){
 				else{
 					$(".error:first").hide();
 				}
-			
-		});
-		$("image-flip").flip({
-			axis: 'y',
-			trigger: 'hover'
+				
+				var mes = $("#form-message").val();
+					mes = mes.toLowerCase();
+					if (!(mes.indexOf("badwords") == -1)) {
+						$(".error:last").show();
+					}
+					
+					else if (!(mes.indexOf("bad words") == -1)) {
+						$(".error:last").show();
+					}
+					else {
+						$(".error:last").hide();
+					}
+				
+		
+				function sendMail() {
+					swal({
+						title: "Yay!",
+						text: "Successfully send email message"
+						
+					});
+
+					$(".form-with-error").val('');
+					$("#form-name").val('');
+				}
+								
+				if ($(".error:first").is(":hidden") && $(".error:last").is(":hidden")) {
+					if ($("#form-message").val() == '') {
+						swal("You didnt write a message!")
+					} 
+					else {
+						if ($("#form-name").val() == ''){
+							swal("You didn't mention your name!")   
+						}
+						else {
+							sendMail();	
+						}
+						
+					}
+				}
+			});
+		
+			$(".image-flip").flip({
+			speed: '500',
+			trigger: 'click'
 			});
 		}
-
 	};
 	app.init();
 });
