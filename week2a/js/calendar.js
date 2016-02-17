@@ -13,4 +13,5 @@ if (days === 7) {
 		days++;
 	}
 }
+stringHTML += "</tr>";
 hotelCalendarTable.innerHTML += stringHTML;
