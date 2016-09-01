@@ -53,10 +53,17 @@ var mainState = {
 		this.score = 0;
 
 		//enemy
-		this.enemies = game.add.group();
-		this.enemies.enableBody = true;
-		this.enemies.createMultiple(10, 'enemy');
-		game.time.events.loop(2200, this.addEnemy, this);
+		this.enemiesUp = game.add.group();
+		this.enemiesUp.enableBody = true;
+		this.enemiesUp.createMultiple(10, 'enemy');
+		game.time.events.loop(2200, this.addEnemyUp, this);
+
+		this.enemiesDown = game.add.group();
+		this.enemiesDown.enableBody = true;
+		this.enemiesDown.createMultiple(10, 'enemy');
+		game.time.events.loop(2200, this.addEnemyDown, this);
+
+
 
 	},
 
@@ -66,8 +73,11 @@ var mainState = {
 		game.physics.arcade.overlap(this.player, this.coin, this.takeCoin, null, this);
 		
 
-		game.physics.arcade.collide(this.enemies, this.walls);
-		game.physics.arcade.overlap(this.player, this.enemies, this.playerDie, null, this);
+		game.physics.arcade.collide(this.enemiesUp, this.walls);
+		game.physics.arcade.overlap(this.player, this.enemiesUp, this.playerDie, null, this);
+
+		game.physics.arcade.collide(this.enemiesDown, this.walls);
+		game.physics.arcade.overlap(this.player, this.enemiesDown, this.playerDie, null, this);
 		
 
 		this.movePlayer();
@@ -123,8 +133,8 @@ var mainState = {
 		this.scoreLabel.text = 'score: ' + this. score;
 		this.updateCoinPosition();
 	},
-	addEnemy: function(){
-		var enemy = this.enemies.getFirstDead();
+	addEnemyUp: function(){
+		var enemy = this.enemiesUp.getFirstDead();
 		if(!enemy) {
 			return;
 		}
@@ -136,6 +146,19 @@ var mainState = {
 		enemy.checkWorldBounds = true;
 		enemy.outOfBoundsKill = true;
 	},
+	addEnemyDown: function(){
+		var enemy = this.enemiesDown.getFirstDead();
+		if(!enemy) {
+			return;
+		}
+		enemy.anchor.setTo(0.5, 1);
+		enemy.reset(game.width/2, game.height);
+		enemy.body.gravity.y = -500;
+		enemy.body.velocity.x = 100 * game.rnd.pick([-1, 1]);
+		enemy.body.bounce.x = 1;
+		enemy.checkWorldBounds = true;
+		enemy.outOfBoundsKill = true;
+	}
 
 };
 
