@@ -17,7 +17,7 @@ var mainState = {
 		this.player = game.add.sprite(game.width/2, game.height/2, 'player');
 		this.player.anchor.setTo(0.5, 0.5);
 		game.physics.arcade.enable(this.player);
-		this.player.body.gravity.y = 20;
+		this.player.body.gravity.y = 150;
 
 		//control
 		this.cursor = game.input.keyboard.createCursorKeys();
@@ -62,17 +62,20 @@ var mainState = {
 
 	update: function(){
 		game.physics.arcade.collide(this.player, this.walls);
-		this.movePlayer();
-		if (!this.player.inWorld){
-			this.playerDie();
-		}
+		
 		game.physics.arcade.overlap(this.player, this.coin, this.takeCoin, null, this);
 		
 
 		game.physics.arcade.collide(this.enemies, this.walls);
 		game.physics.arcade.overlap(this.player, this.enemies, this.playerDie, null, this);
+		
+
+		this.movePlayer();
+		if (!this.player.inWorld){
+			this.playerDie();
+		}
 	},
-	
+
 
 	movePlayer: function(){
 		if (this.cursor.left.isDown){
