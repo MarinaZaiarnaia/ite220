@@ -45,7 +45,7 @@ var menuState = {
 	start: function(){
 		if(!game.device.desktop && game.input.y < 50 && game.input.x < 60){
 			return;
-		},
+		}
 		game.state.start('play');
 	}
 
